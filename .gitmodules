@@ -1,0 +1,3 @@
+[submodule "vpico"]
+	path = vpico
+	url = git@github.com:ert-tiroir/vpico.git
