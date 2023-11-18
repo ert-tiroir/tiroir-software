@@ -4,6 +4,7 @@ SOURCES   := $(shell find $(SOURCEDIR) -name '*.cpp')
 
 update:
 	git pull origin main
+	git submodule update --init --recursive
 	git submodule foreach git pull origin main
 clean:
 	-[ -e build/src ] && rm -rf build/src
