@@ -1,15 +1,23 @@
 
-SOURCEDIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+SOURCEDIR := ./build/src
 SOURCES   := $(shell find $(SOURCEDIR) -name '*.cpp')
 
 clean:
+	-[ -e build/src ] && rm -rf build/src
 	-[ -e build/out ] && rm -f build/out
 	-[ -e out ] && rm -f out
+compile:
+	g++ -o build/out -I./build/src $(SOURCES) -DVIRTUAL
+	mv build/out .
 build:
-	mkdir -p build
 	make -B clean
-	g++ -o build/out -I./src $(SOURCES)
-	cp build/out .
+
+	mkdir -p build
+	
+	cp -r src build/
+	cp -r vpico/vpico build/src
+
+	make -B compile
 run:
 	make -B build
 	./out

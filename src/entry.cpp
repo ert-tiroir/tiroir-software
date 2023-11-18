@@ -1,6 +1,8 @@
 
-#include <iostream>
+#include <vpico/stdlib.h>
 
 int main () {
-    std::cout << "Hello, World !\n";
+    setup_default_uart();
+    printf("Hello, World !\n");
+    return 0;
 }
